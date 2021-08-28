@@ -2,18 +2,13 @@
     - authentication
         - able to add / get products unless logged in
 
-- api to get all products info
-    - json format
-
 - gui to add products
     - details 
-        - date created (auto)
-        - date modified (auto)
-        - name 
-        - description
-        - price
         - tag (catergorize)
         - image
             - able to upload an image
             - when the form is subbmited, image will be uploaded to a web service and only url will be kept in json
     
+- gui to change products
+    - display all products ava
+    - remove & update button
