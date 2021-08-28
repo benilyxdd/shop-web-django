@@ -1,4 +1,8 @@
-from django.http.response import JsonResponse
+from json import load
+from re import template
+from django.http.response import HttpResponse, JsonResponse
+from django.core import serializers
+from django.template import loader
 from rest_framework.decorators import api_view
 from rest_framework import mixins, generics
 
@@ -14,7 +18,12 @@ def api_products(request):
 
 
 def modify_products_gui(request):
-    pass
+    products = Product.objects.all()
+    template = loader.get_template('product/index.html')
+    context = {
+        'products': products
+    }
+    return HttpResponse(template.render(context, request))
 
 
 class create_product(generics.GenericAPIView, mixins.CreateModelMixin):
