@@ -13,8 +13,30 @@ def api_products(request):
     return JsonResponse(serializers.data, safe=False)
 
 
+def modify_products_gui(request):
+    pass
+
+
 class create_product(generics.GenericAPIView, mixins.CreateModelMixin):
     serializer_class = ProductSerializer
 
     def post(self, request):
         return self.create(request)
+
+
+class change_product(generics.GenericAPIView, mixins.UpdateModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
+    lookup_field = 'id'
+
+    def put(self, request, id):
+        return self.update(request, id)
+
+
+class delete_product(generics.GenericAPIView, mixins.DestroyModelMixin):
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
+    lookup_field = 'id'
+
+    def delete(self, request, id):
+        return self.destroy(request, id)
