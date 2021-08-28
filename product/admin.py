@@ -6,4 +6,9 @@ from .models import Product
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name', 'cost', 'date_modified')
+    search_fields = ['name']
+    readonly_fields = ('date_created', 'date_modified')
+    filter_horizontal = ()
+    list_filter = ()
+    fieldsets = ()
