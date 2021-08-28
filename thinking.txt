@@ -12,3 +12,5 @@
 - gui to change products
     - display all products ava
     - remove & update button
+
+- deploy
